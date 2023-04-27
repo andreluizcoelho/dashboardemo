@@ -232,7 +232,7 @@ template = pn.template.FastListTemplate(
     title='World CO2 emission dashboard', 
     sidebar=[pn.pane.Markdown("# CO2 Emissions and Climate Change"), 
              pn.pane.Markdown("#### Carbon dioxide emissions are the primary driver of global climate change. It’s widely recognised that to avoid the worst impacts of climate change, the world needs to urgently reduce emissions. But, how this responsibility is shared between regions, countries, and individuals has been an endless point of contention in international discussions."), 
-             pn.pane.PNG('climate_day.png', sizing_mode='scale_both'),
+             pn.pane.PNG('https://cdn.pixabay.com/photo/2016/04/24/04/53/globe-1348777_960_720.png', sizing_mode='scale_both'),
              pn.pane.Markdown("## Settings"),   
              year_slider],
     main=[pn.Row(pn.Column(yaxis_co2, 
@@ -246,11 +246,58 @@ template = pn.template.FastListTemplate(
 template.servable();
 
 
-# In[25]:
+# After running all the cells above 
+# 
+# Close jupyter notebook and anaconda prompt (it also works with it opened)
+# 
+# 1. Open another anaconda prompt 
+# 
+# 2. Change the directory (using 'cd') to the same place where the .ipynb is located 
+# 
+# 3. Type 
+# 
+# panel serve CO2emissionbycontinent.ipynb 
+# 
+# The exact name of the .ipynb dashboard (without the quotes) 
+# 
+# 4. Copy the link that will be generated and paste it in the browser
+# 
+# 
+# Wouldn't it be nice if it could be sharable with anyone?
+# To do that a good option could be to publish on github
 
+# To publish on a github page:
+# 
+# to install panel on conda 
+# 
+# 1. conda install panel hvplot -c pyviz
+# 
+# to check if the version is at least 14.0
+# 
+# 2. conda list panel 
+# 
+# to convert the py to js and html (do not need "docs/app" it does not have to go into a folder) 
+# 
+# 3. panel convert app.py --to pyodide-worker --out docs/app
+# 
+# 
+# 4. Then upload it on github [see this](https://towardsdatascience.com/how-to-deploy-a-panel-visualization-dashboard-to-github-pages-2f520fd8660)
+# 
+# on github pages build and deploy it can go into the main root with no problem, or docs if you want  
+# there is the need of an index.html file (you can copy the html file generated and rename it index.html), sometimes all files together works sometimes it only shows the readme file 
+# it takes 1-3 minutes to deploy so be patient
+# 
+# See the pages below if you want
 
-#type on the anaconda prompt panel serve CO2emissionbycontinent.ipynb (it can be in another anaconda prompt with this one opened)
-
+# I consulted this [page](https://github.com/thu-vu92/python-dashboard-panel)
+# 
+# And this as [well](https://towardsdatascience.com/how-to-deploy-a-panel-visualization-dashboard-to-github-pages-2f520fd8660)
+# 
+# And after publishing I had problem loading the page and got the error: ValueError: PNG pane cannot parse string that is not a filename or URL
+# 
+# For that this page [helped](https://panel.holoviz.org/_modules/panel/pane/image.html) 
+# 
+# So did [this](https://panel.holoviz.org/reference/panes/PNG.html)
 
 # In[ ]:
 
